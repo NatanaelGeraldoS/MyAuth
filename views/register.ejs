@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Register</title>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/index.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="background-glassmorphism mx-auto">
+                <h2 class="text-center">Register</h2>
+                <form action="/api/auth/register" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            placeholder="Enter your name"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date of Birth</label>
+                        <input
+                            type="date"
+                            name="date"
+                            class="form-control"
+                            placeholder="Enter your date of birth"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label d-block">Gender</label>
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="male"
+                                value="Male"
+                                required
+                            />
+                            <label class="form-check-label" for="male"
+                                >Male</label
+                            >
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="gender"
+                                id="female"
+                                value="Female"
+                            />
+                            <label class="form-check-label" for="female"
+                                >Female</label
+                            >
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Enter your password"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Re-enter Password</label>
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            class="form-control"
+                            placeholder="Re-enter your password"
+                            required
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-glass w-100 py-2 mb-3">
+                        Register
+                    </button>
+                    <div class="text-center mt-3">
+                        Already have an account?
+                        <a href="/login" class="text-purple underline-hover"
+                            >LKogin</a
+                        >
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
