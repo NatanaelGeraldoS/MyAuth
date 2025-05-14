@@ -4,7 +4,6 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 
 const authRoutes = require("./routes/auth");
-const setupTables = require("./database/setupTable");
 const webAuthenticationToken = require("./middleware/webAuthenticationToken");
 
 const app = express();
@@ -25,8 +24,8 @@ app.get("/dashboard", webAuthenticationToken, (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-    res.clearCookie("token"); 
-    return res.redirect("/"); 
+    res.clearCookie("token");
+    return res.redirect("/");
 });
 
 app.get("/", (req, res) => {
@@ -51,7 +50,36 @@ app.get("/register", (req, res) => {
     });
 });
 
-setupTables();
+app.get("/forgotPassword", (req, res) => {
+    const token = req.cookies.token;
+    if (token) {
+        return res.redirect("/dashboard");
+    }
+    res.render("forgotPassword", {
+        title: "Forgot Password",
+        scripts: ["./js/forgotPassword.js"],
+    });
+});
+
+app.get("/resetPassword", (req, res) => {
+    const token = req.cookies.token;
+    if (token) {
+        return res.redirect("/dashboard");
+    }
+
+    const resetToken = req.query.q;
+    try {
+        res.render("resetPassword", {
+            title: "Reset Password",
+            scripts: ["./js/resetPassword.js"],
+            token: resetToken,
+        });
+    } catch (err) {
+        console.log(err);
+        return res.redirect("/?reset=expired");
+    }
+});
+
 app.use("/api/auth", authRoutes);
 
 app.use(express.static("public_html"));
