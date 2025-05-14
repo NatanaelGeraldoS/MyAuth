@@ -5,7 +5,7 @@ async function setupTables() {
         await db.query(`
             CREATE TABLE IF NOT EXISTS user (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                Name VARCHAR(100) NOT NULL UNIQUE,
+                Name VARCHAR(100) NOT NULL,
                 Email VARCHAR(100) NOT NULL UNIQUE,
                 Password VARCHAR(255) NOT NULL,
                 DoB DATE NOT NULL,

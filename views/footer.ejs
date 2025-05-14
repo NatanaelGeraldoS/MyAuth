@@ -1,0 +1,14 @@
+        <!-- Toast container -->
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
+            <div id="toast-container"></div>
+        </div>
+        
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <% if (typeof scripts !== 'undefined' && scripts.length) { %>
+            <% scripts.forEach(function(script) { %>
+                <script type="module" src="<%= script %>"></script>
+            <% }); %>
+        <% } %>
+    </body>
+</html>
